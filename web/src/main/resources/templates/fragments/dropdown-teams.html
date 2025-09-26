@@ -1,0 +1,35 @@
+<li th:fragment="dropdown-teams" class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
+        <span class="uil fs-7 me-2 uil-social-distancing"></span>Teams
+    </a>
+    <ul class="dropdown-menu navbar-dropdown-caret">
+        <li>
+            <a class="dropdown-item" th:href="@{/teams/add}">
+                <div class="dropdown-item-wrapper">
+                    <span class="me-2 uil fs-8 uil-plus-circle"></span>Add
+                </div>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" th:href="@{/teams/league/MLB}">
+                <div class="dropdown-item-wrapper">
+                    <span class="me-2 uil fs-8 uil-baseball-ball"></span>MLB
+                </div>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" th:href="@{/teams/league/NBA}">
+                <div class="dropdown-item-wrapper">
+                    <span class="me-2 uil fs-8 uil-basketball"></span>NBA
+                </div>
+            </a>
+        </li>
+        <li>
+            <a class="dropdown-item" th:href="@{/teams/league/NFL}">
+                <div class="dropdown-item-wrapper">
+                    <span class="me-2 uil fs-8 uil-football-ball"></span>NFL
+                </div>
+            </a>
+        </li>
+    </ul>
+</li>

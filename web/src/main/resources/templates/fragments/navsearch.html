@@ -1,0 +1,33 @@
+<div th:fragment="navsearch" class="search-box navbar-top-search-box d-none d-lg-block" data-list='{"valueNames":["title"]}' style="width:25rem;">
+    <form class="position-relative" data-bs-toggle="search" data-bs-display="static">
+        <input class="form-control search-input fuzzy-search rounded-pill form-control-sm" type="search"
+            placeholder="Search..." aria-label="Search" />
+        <span class="fas fa-search search-box-icon"></span>
+    </form>
+    <div class="btn-close position-absolute end-0 top-50 translate-middle cursor-pointer shadow-none"
+        data-bs-dismiss="search">
+        <button class="btn btn-link p-0" aria-label="Close"></button>
+    </div>
+    <div class="dropdown-menu border start-0 py-0 overflow-hidden w-100">
+        <div class="scrollbar-overlay" style="max-height: 30rem;">
+            <div class="list pb-3">
+                <h6 class="dropdown-header text-body-highlight fs-10 py-2">
+                    24 <span class="text-body-quaternary">results</span>
+                </h6>
+                <hr class="my-0" />
+                <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                    Recently Searched
+                </h6>
+                <div class="py-2"></div>
+                <hr class="my-0" />
+                <h6 class="dropdown-header text-body-highlight fs-9 border-bottom border-translucent py-2 lh-sm">
+                    Products
+                </h6>
+                <div class="py-2"></div>
+            </div>
+            <div class="text-center">
+                <p class="fallback fw-bold fs-7 d-none">No Result Found.</p>
+            </div>
+        </div>
+    </div>
+</div>
