@@ -1,13 +1,13 @@
 package com.asa.web.dto;
 
-import java.time.LocalDate;
+// import java.time.LocalDate;
 
-import lombok.Data;
+// import lombok.Data;
 
-@Data
-public class GameFormDto {
-    private Long homeTeamId;
-    private Long awayTeamId;
-    private LocalDate gameDate;
-    private String week;
-}
+// @Data
+// public class GameFormDto {
+//     private Long homeTeamId;
+//     private Long awayTeamId;
+//     private LocalDate gameDate;
+//     private String week;
+// }

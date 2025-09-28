@@ -2,6 +2,7 @@ package com.asa.web.service;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.ai.document.Document;
 import org.springframework.ai.reader.tika.TikaDocumentReader;
@@ -22,11 +23,14 @@ import lombok.extern.slf4j.Slf4j;
 public class EmbeddingService {
 
     private final VectorStore vectorStore;
+    private final CurrentUserService  currentUserService;
 
     public void generate(Resource document) {
 
+        UUID currentUserId = currentUserService.getCurrentUserId();
+
         try {
-            log.info("Starting embedding generation for document");
+            log.info("Starting embedding generation for document (userId={})", currentUserId);
             
             // Read the file using Tika
             TikaDocumentReader documentReader = new TikaDocumentReader(document);
@@ -39,6 +43,10 @@ public class EmbeddingService {
             List<Document> splitDocuments = textSplitter.split(readDocuments);
             
             log.info("Split into {} chunks", splitDocuments.size());
+
+            for (Document doc : splitDocuments) {
+                doc.getMetadata().put("userId", currentUserId.toString());
+            }
 
             // Store the data in the vector database
             vectorStore.accept(splitDocuments);

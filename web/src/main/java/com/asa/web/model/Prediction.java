@@ -16,14 +16,19 @@ public class Prediction extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "game_id", nullable = false)
-    private Game game;
+    @Column(name = "question", nullable = false, length = 500)
+    private String question;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "winning_team_id", nullable = false)
-    private Team winningTeam;
+    @Column(name = "answer", nullable = false, length = 500)
+    private String answer;
 
-    
+    @Column(name = "explanation", length = 1000)
+    private String explanation;
+
+    @Column(name = "confidence_score", nullable = false)
+    private Double confidenceScore;
+
+    @Version // optimistic locking column
+    private Long version;
 
 }
