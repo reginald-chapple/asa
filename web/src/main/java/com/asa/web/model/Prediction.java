@@ -1,5 +1,8 @@
 package com.asa.web.model;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -22,7 +25,8 @@ public class Prediction extends BaseEntity {
     @Column(name = "answer", nullable = false, length = 500)
     private String answer;
 
-    @Column(name = "explanation", length = 1000)
+    @Column(name = "explanation")
+    @Lob
     private String explanation;
 
     @Column(name = "confidence_score", nullable = false)
@@ -30,5 +34,14 @@ public class Prediction extends BaseEntity {
 
     @Version // optimistic locking column
     private Long version;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "prediction_filters",
+        joinColumns = @JoinColumn(name = "prediction_id"),
+        inverseJoinColumns = @JoinColumn(name = "filter_id")
+    )
+    @Builder.Default
+    private Set<Filter> filters = new HashSet<>();
 
 }

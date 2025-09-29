@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" 
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    layout:decorate="~{layout.html}">
+<head>
+    <title>Filters</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <div class="row">
+            <div class="col-md-8">
+                <!-- Success Message -->
+                <div th:if="${success}" class="alert alert-success alert-dismissible fade show" role="alert">
+                    <i class="fas fa-check-circle"></i>
+                    <span th:text="${success}"></span>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h1 class="h5">Filters</h1>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive scrollbar">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Value</th>
+                                        <th scope="col"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="filter : ${filters}">
+                                        <td th:text="${filter.name}" scope="row"></td>
+                                        <td th:text="${filter.value}"></td>
+                                        <td><a th:href="@{/}">View</a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h2 class="h5">Teams by league</h2>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a th:href="@{/}" class="btn btn-outline-secondary">MLB</a>
+                            <a th:href="@{/}" class="btn btn-outline-secondary">NBA</a>
+                            <a th:href="@{/}" class="btn btn-outline-secondary">NFL</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

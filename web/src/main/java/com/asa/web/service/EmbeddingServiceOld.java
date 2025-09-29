@@ -22,14 +22,14 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class EmbeddingService {
+public class EmbeddingServiceOld {
 
     private final VectorStore vectorStore;
 
     public void generate(Resource document, Set<Filter> appliedFilters) {
 
         try {
-            log.info("Starting embedding generation");
+            log.info("Starting embedding generation with (filters={})", appliedFilters.stream().map(Filter::getName).toList());
             
             // Read the file using Tika
             TikaDocumentReader documentReader = new TikaDocumentReader(document);
@@ -40,6 +40,8 @@ public class EmbeddingService {
             // Split file into chunks
             TextSplitter textSplitter = new TokenTextSplitter();
             List<Document> splitDocuments = textSplitter.split(readDocuments);
+
+            
             
             log.info("Split into {} chunks", splitDocuments.size());
 

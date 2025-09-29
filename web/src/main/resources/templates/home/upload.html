@@ -29,10 +29,24 @@
                             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
                         </div>
 
-                        <form th:action="@{/upload}" method="post" enctype="multipart/form-data">
+                        <form th:action="@{/upload}" method="post" th:object="${upload}" enctype="multipart/form-data">
+                            <div class="mb-3">
+                                <label class="form-label">Filters</label>
+                                <div th:each="filter : ${filters}" class="form-check">
+                                    <input class="form-check-input"
+                                        type="checkbox"
+                                        th:value="${filter.id}"
+                                        th:field="*{filters}"
+                                        th:id="'filter__' + ${filter.id}" />
+                                    <label class="form-check-label" th:for="'filter__' + ${filter.id}">
+                                        <span th:text="${filter.name} + ' - ' + ${filter.value}"></span>
+                                    </label>
+                                </div>
+                            </div>
+
                             <div class="mb-3">
                                 <label for="file" class="form-label">Choose File</label>
-                                <input type="file" class="form-control" id="file" name="file" 
+                                <input type="file" class="form-control" th:field="*{file}"
                                        accept=".pdf,.csv" required>
                                 <div class="form-text">
                                     Only PDF and CSV files are accepted. Maximum file size: 10MB.

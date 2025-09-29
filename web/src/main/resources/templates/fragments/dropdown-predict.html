@@ -1,8 +1,15 @@
-<li th:fragment="dropdown-games" class="nav-item dropdown">
+<li th:fragment="dropdown-predict" class="nav-item dropdown">
     <a class="nav-link dropdown-toggle lh-1" href="#!" role="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-haspopup="true" aria-expanded="false">
-        <span class="uil fs-7 me-2 uil-schedule"></span>Games
+        <span class="uil fs-7 me-2 uil-analytics"></span>Predictive Analytics
     </a>
     <ul class="dropdown-menu navbar-dropdown-caret">
+        <li>
+            <a class="dropdown-item" th:href="@{/predictions/ask-question}">
+                <div class="dropdown-item-wrapper">
+                    <span class="me-2 uil fs-8 uil-question-circle"></span>Ask a Question
+                </div>
+            </a>
+        </li>
         <li>
             <a class="dropdown-item" th:href="@{/}">
                 <div class="dropdown-item-wrapper">
